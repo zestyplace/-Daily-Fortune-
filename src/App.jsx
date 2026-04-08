@@ -104,6 +104,45 @@ function IcoNote(){return <svg width="15" height="15" viewBox="0 0 16 16" fill="
 function IcoCal(){return <svg width="15" height="15" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5"><rect x="1.5" y="3" width="13" height="11.5" rx="1.5"/><path d="M1.5 7h13" strokeLinecap="round"/><path d="M5.5 1.5v3M10.5 1.5v3" strokeLinecap="round"/><circle cx="5" cy="10.5" r="0.9" fill="currentColor" stroke="none"/><circle cx="8" cy="10.5" r="0.9" fill="currentColor" stroke="none"/><circle cx="11" cy="10.5" r="0.9" fill="currentColor" stroke="none"/></svg>;}
 
 export default function App(){
+  const [started, setStarted] = useState(false);
+
+  if (!started) {
+    return (
+      <div style={{
+        minHeight: "100vh",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        background: "#f5f4f0"
+      }}>
+        <div style={{ textAlign: "center" }}>
+          <div style={{ fontSize: 32, fontWeight: 800, marginBottom: 12 }}>
+            오늘운
+          </div>
+
+          <div style={{ marginBottom: 24, color: "#7070a0", lineHeight: 1.6 }}>
+            오늘의 운세를 기록하면<br />
+            흐름이 보인다
+          </div>
+
+          <button
+            onClick={() => setStarted(true)}
+            style={{
+              padding: "12px 20px",
+              borderRadius: 999,
+              border: "none",
+              background: "#1a1830",
+              color: "#fff",
+              fontWeight: 700
+            }}
+          >
+            기록 시작
+          </button>
+        </div>
+      </div>
+    );
+  }
+
   const today=new Date();
   const [view,setView]=useState('cal');
   const [cy,setCy]=useState(today.getFullYear());
