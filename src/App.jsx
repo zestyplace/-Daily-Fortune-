@@ -235,11 +235,11 @@ if(!started){
           src="/-Daily-Fortune-/icon.png"
           alt="오늘운 아이콘"
           style={{
-            width: 72,
-            height: 72,
-            borderRadius: 20,
-            marginBottom: 20,
-            boxShadow: '0 8px 20px rgba(0,0,0,0.08)'
+            width: 140,
+            height: 140,
+            borderRadius: 28,
+            marginBottom: 24,
+            boxShadow: '0 12px 30px rgba(0,0,0,0.12)',
           }}
         />
 
