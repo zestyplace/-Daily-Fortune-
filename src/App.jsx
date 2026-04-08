@@ -1,5 +1,3 @@
-지금 App.jsx 열어서 맨 위 구조 이렇게 바꿔
-
 import { useState } from "react";
 
 function App() {
