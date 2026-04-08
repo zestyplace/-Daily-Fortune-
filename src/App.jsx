@@ -243,13 +243,13 @@ if(!started){
           }}
         />
 
-        <div style={{fontSize:32,fontWeight:800,color:'#111',marginBottom:16,letterSpacing:'-0.02em'}}>
+        <div style={{fontSize:32,fontWeight:700,color:'#111',marginBottom:16,letterSpacing:'-0.02em'}}>
           오늘운
         </div>
 
         <div style={{fontSize:17,color:'#7a79a8',lineHeight:1.7,marginBottom:28,whiteSpace:'pre-line'}}>
-          오늘의 운세를 기록하면{'\n'}
-          흐름이 보인다
+          기록하면{'\n'}
+          내 운의 흐름이 보여요.
         </div>
 
         <button
