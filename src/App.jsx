@@ -1,9 +1,48 @@
+지금 App.jsx 열어서 맨 위 구조 이렇게 바꿔
+
 import { useState } from "react";
 
 function App() {
   const [started, setStarted] = useState(false);
 
+  // 👉 시작 화면
   if (!started) {
+    return (
+      <div style={{
+        height: "100vh",
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "center",
+        alignItems: "center",
+        textAlign: "center",
+        padding: "24px",
+        background: "#f5f4f0"
+      }}>
+        <h1 style={{ fontSize: "28px", marginBottom: "16px" }}>
+          오늘운
+        </h1>
+
+        <p style={{ fontSize: "16px", lineHeight: "1.6", marginBottom: "32px" }}>
+          오늘의 운세를 기록하면<br />
+          흐름이 보인다
+        </p>
+
+        <button
+          onClick={() => setStarted(true)}
+          style={{
+            padding: "12px 24px",
+            fontSize: "16px",
+            borderRadius: "999px",
+            border: "none",
+            background: "#111",
+            color: "#fff"
+          }}
+        >
+          기록 시작
+        </button>
+      </div>
+    );
+  }
     return (
       <div style={{
         height: "100vh",
