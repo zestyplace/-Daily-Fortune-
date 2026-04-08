@@ -118,14 +118,10 @@ export default function App(){
 
   // ── 인증 상태 감지 ──
   useEffect(()=>{
-    supabase.auth.getSession().then(({data:{session}})=>{
-      setUser(session?.user||null);
-      setAuthLoading(false);
-      if(session?.user) setStarted(true); // 이미 로그인된 경우 스플래시 스킵
-    });
-    const {data:{subscription}}=supabase.auth.onAuthStateChange((_,session)=>{
+    const {data:{subscription}}=supabase.auth.onAuthStateChange((event,session)=>{
       setUser(session?.user||null);
       if(session?.user) setStarted(true);
+      setAuthLoading(false);
     });
     return ()=>subscription.unsubscribe();
   },[]);
