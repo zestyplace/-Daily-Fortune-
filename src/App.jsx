@@ -1,10 +1,3 @@
-
-
-
-
-
-
-
 import { useState, useEffect, useRef } from "react";
 
 // ── localStorage shim (window.storage 대체) ──
@@ -48,7 +41,7 @@ const JJBG=['#d8e5f0','#faf4dc','#e8f5ec','#f0faf4','#f5ecd4','#fef0ef','#fce8e6
 const JG={1:[5,0,1],2:[4,1,2],3:[6,2,3],4:[5,3,4],5:[5,4,5],6:[6,5,6],7:[7,6,7],8:[7,7,8],9:[8,8,9],10:[8,9,10],11:[7,10,11],12:[7,11,0]};
 const YINW=[2,4,6,8,0,2,4,6,8,0];
 const LAVEN='#dddcec';
-const JJ_ANI=['','','','','','','','','','','',''];
+const JJ_ANI=['🐭','🐄','🐯','🐰','🐲','🐍','🐴','🐑','🐒','🐓','🐕','🐷'];
 const JJ_ANI_KR=['쥐','소','호랑이','토끼','용','뱀','말','양','원숭이','닭','개','돼지'];
 const JJ_ANI_DESC=['영리하고 민첩하며 어둠 속에서도 길을 찾는 지혜를 지닙니다.','묵묵히 일하는 성실함과 강인한 인내력을 상징합니다.','용맹하고 독립적이며 강인한 에너지로 변화를 이끕니다.','온순하고 섬세하며 풍요로운 행운과 부드러운 힘을 지닙니다.','신성하고 강력한 힘으로 변화와 성공을 이끄는 상서로운 존재입니다.','지혜롭고 직관적이며 깊은 통찰력으로 본질을 꿰뚫습니다.','활동적이고 자유로운 영혼으로 빠른 전진과 발전을 상징합니다.','온화하고 창의적이며 풍요로운 예술적 감각이 넘칩니다.','영리하고 다재다능하며 어떤 변화에도 유연하게 적응합니다.','부지런하고 세심하며 새벽을 알리는 시작과 성취의 기운입니다.','충직하고 용감하며 진실한 우정과 수호의 기운을 상징합니다.','복스럽고 관대하며 풍요와 행복을 가져다주는 길상입니다.'];
 const JJ_IS_YANG=[false,false,true,false,true,true,false,false,true,false,true,true];
@@ -62,7 +55,7 @@ function getYearPeriod(y){const sd=IPCHUN[y]||4,nd=IPCHUN[y+1]||4;return y+'년 
 function getLunarMark(d){const k=d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');return LUNAR_M[k]||null;}
 function calcMP(date){const y=date.getFullYear(),m=date.getMonth()+1,d=date.getDate();const row=JG[m]||[1,0,0],ji=d<row[0]?row[1]:row[2];const yCg=(((m===1?y-1:y)-1984)%60+60)%60%10;const cg=(YINW[yCg]+(ji-2+12)%12)%10;return {cg:CG[cg],jj:JJ[ji],cgk:CGK[cg],jjk:JJK[ji],color:CGC[cg],bg:CGBG[cg],label:CG[cg]+JJ[ji],labelk:CGK[cg]+JJK[ji]};}
 function calcDP(date){const diff=Math.round((new Date(date.getFullYear(),date.getMonth(),date.getDate())-new Date(2000,0,7))/86400000);const idx=((diff%60)+60)%60,ci=idx%10,ji=idx%12;return {idx,ci,ji,cg:CG[ci],cgk:CGK[ci],jj:JJ[ji],jjk:JJK[ji],cgColor:CGC[ci],jjColor:JJC[ji],cgBg:CGBG[ci],label:CG[ci]+JJ[ji],labelk:CGK[ci]+JJK[ji],ani:JJ_ANI[ji]};}
-function getYI(y){const i=((y-1984)%60+60)%60,ci=i%10,ji=i%12;const cgYang=ci%2===0,jjYang=JJ_IS_YANG[ji];const cgOhFull=(cgYang?'양':'음')+OHKR[OHCG[ci]]+'('+(cgYang?'陽':'陰')+OHCG[ci]+')';const jjOhFull=(jjYang?'양':'음')+OHKR[OHJJ[ji]]+'('+(jjYang?'陽':'陰')+OHJJ[ji]+')';return {ci,ji,cg:CG[ci],jj:JJ[ji],cgk:CGK[ci],jjk:JJK[ji],cgOh:OHCG[ci],jjOh:OHJJ[ji],cgColor:CGC[ci],jjColor:JJC[ji],cgBg:CGBG[ci],cgOhFull,jjOhFull,ani:JJ_ANI[ji],aniKr:JJ_ANI_KR[ji],aniDesc:JJ_ANI_DESC[ji],cgDesc:CG_SPEC[ci],jjDesc:JJ_SPEC[ji],period:getYearPeriod(y),combined:OHCG[ci]===OHJJ[ji]?'천간지지 모두 '+OHCG[ci]+'의 기운이 중첩된 강렬한 해':'천간 '+OHCG[ci]+'과 지지 '+OHJJ[ji]+'의 기운이 어우러지는 해'};}
+function getYI(y){const i=((y-1984)%60+60)%60,ci=i%10,ji=i%12;const cgYang=ci%2===0,jjYang=JJ_IS_YANG[ji];const cgOhFull=(cgYang?'양':'음')+OHKR[OHCG[ci]]+'('+(cgYang?'陽':'陰')+OHCG[ci]+')';const jjOhFull=(jjYang?'양':'음')+OHKR[OHJJ[ji]]+'('+(jjYang?'陽':'陰')+OHJJ[ji]+')';return {ci,ji,cg:CG[ci],jj:JJ[ji],cgk:CGK[ci],jjk:JJK[ji],cgOh:OHCG[ci],jjOh:OHJJ[ji],cgColor:CGC[ci],jjColor:JJC[ji],cgBg:CGBG[ci],cgOhFull,jjOhFull,ani:JJ_ANI[ji],aniKr:JJ_ANI_KR[ji],aniDesc:JJ_ANI_DESC[ji],cgDesc:CG_SPEC[ci],jjDesc:JJ_SPEC[ji],period:getYearPeriod(y),combined:OHCG[ci]===OHJJ[ji]?'천간·지지 모두 '+OHCG[ci]+'의 기운이 중첩된 강렬한 해':'천간 '+OHCG[ci]+'과 지지 '+OHJJ[ji]+'의 기운이 어우러지는 해'};}
 function getYPK(y){const i=((y-1984)%60+60)%60;return CGK[i%10]+JJK[i%12];}
 function toKr(lb){if(!lb||lb.length<2)return '';const a=CG.indexOf(lb[0]),b=JJ.indexOf(lb[1]);return (a>=0?CGK[a]:'')+(b>=0?JJK[b]:'');}
 function dKey(y,m,d){return 'diary:'+y+'-'+String(m+1).padStart(2,'0')+'-'+String(d).padStart(2,'0');}
@@ -230,6 +223,7 @@ export default function App(){
   const sres=sqTrim?Object.entries(entries).filter(p=>{const q=sqTrim.toLowerCase(),v=p[1];return [(v.labelk||''),(v.label||''),(v.monthk||''),(v.month||''),(v.note||'')].some(s=>s.toLowerCase().includes(q));}).sort((a,b)=>b[0].localeCompare(a[0])):[];
 
   const NB={background:'none',border:'none',cursor:'pointer',color:'#a0a0c0',fontSize:17,padding:'4px 6px'};
+  const PREV='\u2039', NEXT='\u203a';
   const SECS={fontSize:10,color:'#9090b8',letterSpacing:2,marginBottom:8,fontWeight:700};
 
   if(showRoller){
@@ -387,7 +381,7 @@ export default function App(){
       return (
         <div>
           <div style={{background:bg,borderRadius:12,padding:'14px 16px',marginBottom:12,display:'flex',alignItems:'center',justifyContent:'space-between'}}>
-            <div><span style={{fontSize:26,fontWeight:700,color:cgC}}>{rankLabel[0]}</span><span style={{fontSize:26,fontWeight:700,color:jjC}}>{rankLabel[1]}</span><span style={{fontSize:13,color:'#9090b8',marginLeft:6}}>{toKr(rankLabel)}일</span><div style={{fontSize:12,color:'#9090b8',marginTop:4}}>{ents.length}일 기록{avg2?'  평균 '+'★'.repeat(Math.round(avg2))+' '+avg2.toFixed(1):''}</div></div>
+            <div><span style={{fontSize:26,fontWeight:700,color:cgC}}>{rankLabel[0]}</span><span style={{fontSize:26,fontWeight:700,color:jjC}}>{rankLabel[1]}</span><span style={{fontSize:13,color:'#9090b8',marginLeft:6}}>{toKr(rankLabel)}일</span><div style={{fontSize:12,color:'#9090b8',marginTop:4}}>{ents.length}일 기록{avg2?' · 평균 '+'★'.repeat(Math.round(avg2))+' '+avg2.toFixed(1):''}</div></div>
             <button onClick={()=>setRankLabel(null)} style={{background:'#fff',border:'1px solid #e0dff0',borderRadius:8,padding:'5px 12px',color:'#7070a0',fontSize:12,cursor:'pointer'}}>← 목록</button>
           </div>
           {ents.length===0?<div style={{textAlign:'center',color:'#c0bfd8',padding:'20px'}}>기록 없음</div>:ents.map(p=><EntryCard key={p[0]} ek={p[0]} ev={p[1]}/>)}
@@ -466,7 +460,7 @@ export default function App(){
         </div>
         {isMon?(()=>{
           const sorted=Object.entries(monthNotes).sort((a,b)=>{const rd=(b[1].rating||0)-(a[1].rating||0);return rd!==0?rd:b[0].localeCompare(a[0]);});
-          if(!sorted.length)return <div style={{textAlign:'center',color:'#c0bfd8',padding:'40px 20px'}}><div style={{fontSize:24,marginBottom:10}}></div>달력 하단에서 월운을 기록하면<br/>여기에 모아볼 수 있습니다</div>;
+          if(!sorted.length)return <div style={{textAlign:'center',color:'#c0bfd8',padding:'40px 20px'}}><div style={{fontSize:24,marginBottom:10}}>📅</div>달력 하단에서 월운을 기록하면<br/>여기에 모아볼 수 있습니다</div>;
           return sorted.map(p=>{
             const k=p[0],v=p[1],ci=CG.indexOf((v.monthLabel||'')[0]||'');
             const color=ci>=0?CGC[ci]:'#9090b8',bg=ci>=0?CGBG[ci]:'#f0f0f8',mlk=v.monthLabelk||toKr(v.monthLabel||'');
@@ -480,7 +474,7 @@ export default function App(){
           });
         })():(()=>{
           const sorted=Object.entries(yearNotes).sort((a,b)=>b[0].localeCompare(a[0]));
-          if(!sorted.length)return <div style={{textAlign:'center',color:'#c0bfd8',padding:'40px 20px'}}><div style={{fontSize:24,marginBottom:10}}></div>헤더의 연운 아이콘으로<br/>연간운을 기록해보세요</div>;
+          if(!sorted.length)return <div style={{textAlign:'center',color:'#c0bfd8',padding:'40px 20px'}}><div style={{fontSize:24,marginBottom:10}}>📖</div>헤더의 연운 아이콘으로<br/>연간운을 기록해보세요</div>;
           return sorted.map(p=>{
             const k=p[0],v=p[1],yi=getYI(v.year||+k.replace('year:',''));
             return (
@@ -544,7 +538,7 @@ export default function App(){
       return (
         <div>
           <div style={{background:bg,borderRadius:12,padding:'14px 16px',marginBottom:12,display:'flex',alignItems:'center',justifyContent:'space-between'}}>
-            <div><span style={{fontSize:26,fontWeight:700,color:col}}>{ch}</span><span style={{fontSize:13,color:col+'88',marginLeft:8}}>{chk}일</span><div style={{fontSize:12,color:col+'88',marginTop:4}}>{s.count}일 기록{s.avg?'  평균 '+'★'.repeat(Math.round(s.avg))+' '+s.avg.toFixed(1):''}</div></div>
+            <div><span style={{fontSize:26,fontWeight:700,color:col}}>{ch}</span><span style={{fontSize:13,color:col+'88',marginLeft:8}}>{chk}일</span><div style={{fontSize:12,color:col+'88',marginTop:4}}>{s.count}일 기록{s.avg?' · 평균 '+'★'.repeat(Math.round(s.avg))+' '+s.avg.toFixed(1):''}</div></div>
             <button onClick={()=>setPatSel(null)} style={{background:'#fff',border:'1px solid #e0dff0',borderRadius:8,padding:'5px 12px',color:'#7070a0',fontSize:12,cursor:'pointer'}}>← 목록</button>
           </div>
           {s.list.length===0?<div style={{textAlign:'center',color:'#c0bfd8',padding:'20px'}}>기록 없음</div>:[...s.list].sort((a,b)=>b[0].localeCompare(a[0])).map(p=><EntryCard key={p[0]} ek={p[0]} ev={p[1]}/>)}
@@ -621,7 +615,7 @@ export default function App(){
 
   function renderPat(){
     const hasAny=totalE>0||Object.keys(monthNotes).length>0||Object.keys(yearNotes).length>0;
-    if(!hasAny&&patTab!=='anal')return <div style={{textAlign:'center',color:'#c0bfd8',padding:'50px 20px'}}><div style={{fontSize:28,marginBottom:10}}></div>달력에서 날짜를 클릭해<br/>기록하면 패턴이 나타납니다</div>;
+    if(!hasAny&&patTab!=='anal')return <div style={{textAlign:'center',color:'#c0bfd8',padding:'50px 20px'}}><div style={{fontSize:28,marginBottom:10}}>📝</div>달력에서 날짜를 클릭해<br/>기록하면 패턴이 나타납니다</div>;
     if(patTab==='rank')return renderRankTab();
     if(patTab==='monthly')return renderMonthlyTab();
     if(patTab==='anal')return renderAnalysisTab();
@@ -640,9 +634,9 @@ export default function App(){
             <div style={{display:'flex',alignItems:'center',gap:2}}>
               <button onClick={openYN} style={{background:'#f0eff8',border:'none',borderRadius:8,cursor:'pointer',padding:'6px 8px',color:'#7070a0',display:'flex',alignItems:'center'}}><IcoNote/></button>
               <button onClick={()=>setShowRoller(true)} style={{background:'#f0eff8',border:'none',borderRadius:8,cursor:'pointer',padding:'6px 8px',color:'#7070a0',display:'flex',alignItems:'center',marginRight:4}}><IcoCal/></button>
-              <button style={NB} onClick={()=>{if(cm===0){setCm(11);setCy(cy-1);}else setCm(cm-1);}}></button>
+              <button style={NB} onClick={()=>{if(cm===0){setCm(11);setCy(cy-1);}else setCm(cm-1);}}>{PREV}</button>
               <button style={{...NB,fontSize:11,color:'#c8960c',fontWeight:700}} onClick={()=>{const n=new Date();setCy(n.getFullYear());setCm(n.getMonth());}}>오늘</button>
-              <button style={NB} onClick={()=>{if(cm===11){setCm(0);setCy(cy+1);}else setCm(cm+1);}}></button>
+              <button style={NB} onClick={()=>{if(cm===11){setCm(0);setCy(cy+1);}else setCm(cm+1);}}>{NEXT}</button>
             </div>
           </div>
         ):(
@@ -679,7 +673,7 @@ export default function App(){
               );
             })}
           </div>
-          <div style={{fontSize:10,color:'#c0bfd8',textAlign:'center',padding:'3px 8px'}}>↑ 절기(월주 변경)  ● 기록 완료</div>
+          <div style={{fontSize:10,color:'#c0bfd8',textAlign:'center',padding:'3px 8px'}}>↑ 절기(월주 변경) · ● 기록 완료</div>
           {renderSummary()}
           {renderMNSection()}
           <div style={{margin:'8px 8px 0',position:'relative'}}>
@@ -688,7 +682,7 @@ export default function App(){
           </div>
           {sqTrim&&(
             <div style={{margin:'8px 8px 0'}}>
-              <div style={{...SECS,paddingLeft:2}}>검색 결과  {sres.length}건</div>
+              <div style={{...SECS,paddingLeft:2}}>검색 결과 — {sres.length}건</div>
               {sres.length===0?<div style={{background:'#fff',borderRadius:10,padding:'20px',textAlign:'center',color:'#c0bfd8',fontSize:13}}>기록된 날이 없습니다</div>:sres.map(p=><EntryCard key={p[0]} ek={p[0]} ev={p[1]}/>)}
             </div>
           )}
