@@ -104,45 +104,7 @@ function IcoNote(){return <svg width="15" height="15" viewBox="0 0 16 16" fill="
 function IcoCal(){return <svg width="15" height="15" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5"><rect x="1.5" y="3" width="13" height="11.5" rx="1.5"/><path d="M1.5 7h13" strokeLinecap="round"/><path d="M5.5 1.5v3M10.5 1.5v3" strokeLinecap="round"/><circle cx="5" cy="10.5" r="0.9" fill="currentColor" stroke="none"/><circle cx="8" cy="10.5" r="0.9" fill="currentColor" stroke="none"/><circle cx="11" cy="10.5" r="0.9" fill="currentColor" stroke="none"/></svg>;}
 
 export default function App(){
-  const [started, setStarted] = useState(false);
-
-  if (!started) {
-    return (
-      <div style={{
-        minHeight: "100vh",
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-        background: "#f5f4f0"
-      }}>
-        <div style={{ textAlign: "center" }}>
-          <div style={{ fontSize: 32, fontWeight: 800, marginBottom: 12 }}>
-            오늘운
-          </div>
-
-          <div style={{ marginBottom: 24, color: "#7070a0", lineHeight: 1.6 }}>
-            오늘의 운세를 기록하면<br />
-            흐름이 보인다
-          </div>
-
-          <button
-            onClick={() => setStarted(true)}
-            style={{
-              padding: "12px 20px",
-              borderRadius: 999,
-              border: "none",
-              background: "#1a1830",
-              color: "#fff",
-              fontWeight: 700
-            }}
-          >
-            기록 시작
-          </button>
-        </div>
-      </div>
-    );
-  }
-
+ const [started,setStarted]=useState(false);
   const today=new Date();
   const [view,setView]=useState('cal');
   const [cy,setCy]=useState(today.getFullYear());
@@ -264,7 +226,29 @@ export default function App(){
   const NB={background:'none',border:'none',cursor:'pointer',color:'#a0a0c0',fontSize:17,padding:'4px 6px'};
   const PREV='\u2039', NEXT='\u203a';
   const SECS={fontSize:10,color:'#9090b8',letterSpacing:2,marginBottom:8,fontWeight:700};
+if(!started){
+  return (
+    <div style={{background:'#f5f4f0',minHeight:'100vh',fontFamily:"'Noto Sans KR',sans-serif",maxWidth:480,margin:'0 auto',display:'flex',alignItems:'center',justifyContent:'center',padding:'24px'}}>
+      <div style={{textAlign:'center',width:'100%'}}>
+        <div style={{fontSize:32,fontWeight:800,color:'#111',marginBottom:16,letterSpacing:'-0.02em'}}>
+          오늘운
+        </div>
 
+        <div style={{fontSize:17,color:'#7a79a8',lineHeight:1.7,marginBottom:28,whiteSpace:'pre-line'}}>
+          오늘의 운세를 기록하면{'\n'}
+          흐름이 보인다
+        </div>
+
+        <button
+          onClick={()=>setStarted(true)}
+          style={{background:'#19173f',color:'#fff',border:'none',borderRadius:999,padding:'14px 28px',fontSize:16,fontWeight:700,cursor:'pointer'}}
+        >
+          기록 시작
+        </button>
+      </div>
+    </div>
+  );
+}
   if(showRoller){
     return (
       <div style={{background:'#f5f4f0',minHeight:'100vh',fontFamily:"'Noto Sans KR',sans-serif",maxWidth:480,margin:'0 auto'}}>
