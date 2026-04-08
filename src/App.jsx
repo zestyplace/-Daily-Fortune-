@@ -230,6 +230,19 @@ if(!started){
   return (
     <div style={{background:'#f5f4f0',minHeight:'100vh',fontFamily:"'Noto Sans KR',sans-serif",maxWidth:480,margin:'0 auto',display:'flex',alignItems:'center',justifyContent:'center',padding:'24px'}}>
       <div style={{textAlign:'center',width:'100%'}}>
+
+        <img
+          src="/-Daily-Fortune-/icon.png"
+          alt="오늘운 아이콘"
+          style={{
+            width: 72,
+            height: 72,
+            borderRadius: 20,
+            marginBottom: 20,
+            boxShadow: '0 8px 20px rgba(0,0,0,0.08)'
+          }}
+        />
+
         <div style={{fontSize:32,fontWeight:800,color:'#111',marginBottom:16,letterSpacing:'-0.02em'}}>
           오늘운
         </div>
