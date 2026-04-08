@@ -7,12 +7,12 @@
   "theme_color": "#f5f4f0",
   "icons": [
     {
-      "src": "/-Daily-Fortune-/icon-192.png",
-      "sizes": "192x192",
+      "src": "/-Daily-Fortune-/todayun-icon-180.png",
+      "sizes": "180x180",
       "type": "image/png"
     },
     {
-      "src": "/-Daily-Fortune-/icon-512.png",
+      "src": "/-Daily-Fortune-/todayun-icon-512.png",
       "sizes": "512x512",
       "type": "image/png"
     }
