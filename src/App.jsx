@@ -3,7 +3,12 @@ import { createClient } from "@supabase/supabase-js";
 
 const supabase = createClient(
   import.meta.env.VITE_SUPABASE_URL,
-  import.meta.env.VITE_SUPABASE_ANON_KEY
+  import.meta.env.VITE_SUPABASE_ANON_KEY,
+  {
+    auth: {
+      flowType: 'implicit'
+    }
+  }
 );
 
 const CG=['甲','乙','丙','丁','戊','己','庚','辛','壬','癸'];
